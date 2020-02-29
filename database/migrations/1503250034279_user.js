@@ -16,7 +16,12 @@ class UserSchema extends Schema {
         .notNullable()
         .unique();
       table.string("password", 60).notNullable();
+      table.string("name", 30);
+      table.string("phone", 15);
       table.string("store", 20);
+      table.string("state", 20);
+      table.string("city", 20);
+      table.boolean("active").defaultTo(true);
       table.timestamps();
     });
   }
@@ -25,10 +30,6 @@ class UserSchema extends Schema {
     this.drop("users");
   }
 
-  cars() {
-    //Um usuário possui N carrosc
-    return this.hasMany("App/Models/Car");
-  }
 }
 
 module.exports = UserSchema;

@@ -20,12 +20,6 @@ class CarsSchema extends Schema {
       table.string("total_km").notNullable();
       table.string("fuel").notNullable();
       table.string("details");
-      table
-        .string("store")
-        .unsigned()
-        .references("store")
-        .inTable("users")
-        .onUpdate("CASCADE");
       table.decimal("price").notNullable();
       table.timestamps();
     });
@@ -35,15 +29,7 @@ class CarsSchema extends Schema {
     this.drop("cars");
   }
 
-  user() {
-    //UM carro sempre pertence a 1 usuario
-    return this.belongsTo("App/Models/User");
-  }
-
-  images() {
-    //Um imovel possui muitas imagens
-    return this.hasMany("App/Models/Image");
-  }
+  
 }
 
 module.exports = CarsSchema;

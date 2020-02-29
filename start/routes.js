@@ -24,3 +24,8 @@ Route.post("/sessions", "SessionController.create");
 Route.resource("cars", "CarController")
   .apiOnly()
   .middleware("auth");
+
+//Route for upload images
+Route.post("cars/:id/images", "ImageController.store").middleware("auth");
+
+Route.get("images/:path", "ImageController.show");

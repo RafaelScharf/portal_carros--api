@@ -31,8 +31,14 @@ class User extends Model {
    *
    * @return {Object}
    */
+  
   tokens () {
     return this.hasMany('App/Models/Token')
+  }
+
+  cars() {
+    //Um usuário possui N carrosc
+    return this.hasMany("App/Models/Car");
   }
 }
 

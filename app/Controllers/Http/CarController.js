@@ -19,7 +19,9 @@ class CarController {
    * @param {View} ctx.view
    */
   async index() {
-    const cars = Car.all();
+    const cars = Car.query()
+      .with('car_images')
+      .fetch();
 
     return cars;
   }
@@ -63,7 +65,7 @@ class CarController {
   async show({ params }) {
     const car = await Car.findOrFail(params.id);
 
-    await car.load("images");
+    await car.load("car_images");
 
     return car;
   }
