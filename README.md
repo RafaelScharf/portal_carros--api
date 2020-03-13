@@ -1,17 +1,13 @@
-# Adonis API application
+# Portal Carros || Adonis API application
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
+Esta é uma API de dados para um portal de carros.
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+## Guia de utilização
 
-## Setup
+### Rotas
 
-Use the adonis command to install the blueprint
 
+<<<<<<< HEAD
 ```bash
 adonis new yardstick --api-only
 ```
@@ -56,3 +52,5 @@ adonis migration:run
 ├──────────────────┼───────────┼──────────────────────────┼────────────┼──────────────────┼────────┤
 │ /images/:path    │ HEAD,GET  │ ImageController.show     │            │ /images/:path    │        │
 └──────────────────┴───────────┴──────────────────────────┴────────────┴──────────────────┴────────┘
+=======
+>>>>>>> 1e40fc0e4a0f75db329604e1c9f23538f56e9e7a
