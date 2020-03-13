@@ -20,6 +20,7 @@ class CarsSchema extends Schema {
       table.string("total_km").notNullable();
       table.string("fuel").notNullable();
       table.string("details");
+      table.string("color");
       table.decimal("price").notNullable();
       table.timestamps();
     });

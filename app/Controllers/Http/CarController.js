@@ -20,7 +20,7 @@ class CarController {
    */
   async index() {
     const cars = Car.query()
-      .with('car_images')
+      .with("car_images")
       .fetch();
 
     return cars;
@@ -32,25 +32,25 @@ class CarController {
    *
    * @param {object} ctx
    * @param {Request} ctx.request
+   *
    * @param {Response} ctx.response
    */
   async store({ request, auth, response }) {
-    const {id} = auth.user;
+    const { id } = auth.user;
     const data = request.only([
-      'model',
-      'brand',
-      'year',
-      'total_km',
-      'fuel',
-      'details',
-      'store',
-      'price'
-    ])
+      "model",
+      "brand",
+      "year",
+      "total_km",
+      "fuel",
+      "details",
+      "store",
+      "price"
+    ]);
 
-    const car = await Car.create({ ...data, user_id: id })
+    const car = await Car.create({ ...data, user_id: id });
 
-    return car
-
+    return car;
   }
 
   /**
@@ -79,24 +79,22 @@ class CarController {
    * @param {Response} ctx.response
    */
   async update({ params, request }) {
-    const car = await Car.findOrFail(params.id)
+    const car = await Car.findOrFail(params.id);
     const data = request.only([
-      'model',
-      'brand',
-      'year',
-      'total_km',
-      'fuel',
-      'details',
-      'store',
-      'price'
-    ])
+      "model",
+      "brand",
+      "year",
+      "total_km",
+      "fuel",
+      "details",
+      "store",
+      "price"
+    ]);
 
     car.merge(data);
 
     await car.save();
-    return car
-
-
+    return car;
   }
 
   /**
@@ -115,7 +113,15 @@ class CarController {
     }
 
     await car.delete();
+  }
 
+  //Search methods
+
+  async findCar({ params }) {
+    const response = await Car.from("cars")
+      .where("model", params.key);
+
+      return response;
   }
 }
 

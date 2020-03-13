@@ -29,3 +29,6 @@ Route.resource("cars", "CarController")
 Route.post("cars/:id/images", "ImageController.store").middleware("auth");
 
 Route.get("images/:path", "ImageController.show");
+
+// Search Cars
+Route.resource("cars/find/:key", "CarController.findCar");
