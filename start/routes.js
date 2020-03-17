@@ -30,5 +30,23 @@ Route.post("cars/:id/images", "ImageController.store").middleware("auth");
 
 Route.get("images/:path", "ImageController.show");
 
-// Search Cars
-Route.resource("cars/find/:key", "CarController.findCar");
+// Search Cars by key
+Route.post("cars/find/:key", "CarController.findCar");
+//Search Cars by model
+Route.post("cars/find/model/:key", "CarController.findCarByModel");
+//Search Cars by brand
+Route.post("cars/find/brand/:key", "CarController.findCarByBrand");
+//Search Cars by year
+Route.post("cars/find/year/:key", "CarController.findCarByYear");
+//Search Cars by km
+Route.post("cars/find/km/:key", "CarController.findCarByKm");
+//Search Cars by fuel
+Route.post("cars/find/fuel/:key", "CarController.findCarByFuel");
+//Search Cars by color
+Route.post("cars/find/color/:key", "CarController.findCarColor");
+//Search Cars by price
+Route.post("cars/find/price/:key", "CarController.findCarByPrice");
+
+
+
+

@@ -4,6 +4,7 @@
 const Model = use("Model");
 
 class Car extends Model {
+
   user() {
     //UM carro sempre pertence a 1 usuario
     return this.belongsTo("App/Models/User");

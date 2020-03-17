@@ -118,10 +118,75 @@ class CarController {
   //Search methods
 
   async findCar({ params }) {
-    const response = await Car.from("cars")
-      .where("model", params.key);
+    try {
+      const cars = await Car.query()
+        .where("model", "like", "%" + params.key + "%")
+        .orWhere("brand", "like", "%" + params.key + "%")
+        .orWhere("year", "like", "%" + params.key + "%")
+        .orWhere("total_km", "like", "%" + params.key + "%")
+        .orWhere("fuel", "like", "%" + params.key + "%")
+        .orWhere("color", "like", "%" + params.key + "%")
+        .orWhere("price", "like", "%" + params.key + "%")
+        .paginate(1, 10);
+      
+      const response = cars.toJSON()
 
-      return response;
+      return response.data;
+
+    } catch {}
+
+  }
+
+  async findCarByModel({ params }) {
+    const cars = await Car.query()
+      .where("model", "like", "%" + params.key + "%")
+      .fetch();
+
+    return cars;
+  }
+  async findCarByBrand({ params }) {
+    const cars = await Car.query()
+      .where("brand", "like", "%" + params.key + "%")
+      .fetch();
+
+    return cars;
+  }
+  async findCarByYear({ params }) {
+    const cars = await Car.query()
+      .where("year", "like", "%" + params.key + "%")
+      .fetch();
+
+    return cars;
+  }
+  async findCarByKm({ params }) {
+    //REFATORAR PRA PUXAR DADOS CERTO
+    const cars = await Car.query()
+      .where("total_km", "like", "%" + params.key + "%")
+      .fetch();
+
+    return cars;
+  }
+  async findCarByFuel({ params }) {
+    const cars = await Car.query()
+      .where("fuel", "like", "%" + params.key + "%")
+      .fetch();
+
+    return cars;
+  }
+  async findCarByColor({ params }) {
+    //REFATORAR PRA PUXAR DADOS CERTO
+    const cars = await Car.query()
+      .where("total_km", "like", "%" + params.key + "%")
+      .fetch();
+
+    return cars;
+  }
+  async findCarByPrice({ params }) {
+    const cars = await Car.query()
+      .where("total_km", "like", "%" + params.key + "%")
+      .fetch();
+
+    return cars;
   }
 }
 
